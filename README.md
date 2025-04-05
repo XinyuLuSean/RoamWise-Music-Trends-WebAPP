@@ -16,3 +16,39 @@ With real-time streaming data processing, users can:
 - Compare real-time listening data with historical rankings to understand the evolution of music trends over time.  
 
 Our platform transforms music analytics from a static experience into a dynamic, visually engaging exploration of the world’s evolving music landscape.
+
+## Current Progress – Milestone 3 Completed
+### Data Cleaning and Preprocessing
+- Cleaned: `top_songs_cleaned.csv` and `playlists_cleaned.csv`
+- Processed artists list using `ast.literal_eval`
+- Converted release dates, durations, and removed nulls
+  
+Steps performed: • Removed null entries and cleaned artist/album/song names
+• Converted artist lists to usable formats using ast.literal_eval
+• Standardized release date formats and duration units (e.g., converted milliseconds to seconds)
+
+### Database Schema (PostgreSQL)
+We designed and implemented 6 core tables:
+
+• Artists
+• Albums
+• Songs
+• Playlists
+• PlaylistSongs
+• CountryRankings
+
+Schema design ensures: • Proper use of foreign key constraints
+• Referential integrity between songs, artists, albums, and playlists
+
+### Localhost Testing + AWS RDS Deployment
+• Inserted data into all tables locally using psycopg2
+• Migrated the database to AWS RDS (group23-db) and verified data insertion
+• Stored RDS credentials securely using a .env file and loaded them via python-dotenv
+• Created modular insertion scripts under /data_insertion/, including:
+- insert_artists.py
+- insert_albums.py
+- insert_songs.py
+- insert_playlists.py
+- insert_playlistsongs.py
+- insert_country_rankings.py
+
