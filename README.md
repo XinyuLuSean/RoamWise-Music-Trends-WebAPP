@@ -52,3 +52,10 @@ Schema design ensures: • Proper use of foreign key constraints
 - insert_playlistsongs.py
 - insert_country_rankings.py
 
+## Datasets
+
+Due to file size, datasets are available via Google Drive:
+
+- [Top Songs Cleaned CSV](https://drive.google.com/file/d/1OgsGpsE5TWSRsOto9ZtY6cL5aQcCUuu_/view?usp=drive_link)
+- [Playlists Cleaned CSV](https://drive.google.com/file/d/1eFlZoxA4hMzdpnN0UTDAqcEx8FJ5avSR/view?usp=drive_link)
+
