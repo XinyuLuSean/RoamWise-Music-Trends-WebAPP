@@ -1,0 +1,10 @@
+# Ignore dataset CSVs
+datasets/*.csv
+
+# Ignore environment variable file
+.env
+
+# Ignore Python bytecode and VSCode settings
+__pycache__/
+*.pyc
+.vscode/

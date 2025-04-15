@@ -1,6 +1,6 @@
 # Group23-Project
 
-## 1. Motivation for the Idea / Description of the Problem the Application Solves
+## Motivation for the Idea / Description of the Problem the Application Solves
 We are all passionate about music, but each of us has a unique musical taste and follows different music trends. This inspired us to create a global music trend visualization platform that allows users to explore how music is trending in different regions intuitively and interactively.
 
 Music trends are constantly evolving and vary significantly across different regions. However, existing music analytics platforms primarily present data in static lists and rankings, making it difficult to visualize the global distribution of music trends effectively. Understanding how songs gain popularity in different countries and how listening habits change over time is crucial for enthusiasts, industry professionals, and data analysts.
@@ -17,7 +17,6 @@ With real-time streaming data processing, users can:
 
 Our platform transforms music analytics from a static experience into a dynamic, visually engaging exploration of the world’s evolving music landscape.
 
-## Current Progress – Milestone 3 Completed
 ### Data Cleaning and Preprocessing
 - Cleaned: `top_songs_cleaned.csv` and `playlists_cleaned.csv`
 - Processed artists list using `ast.literal_eval`
@@ -51,6 +50,18 @@ Schema design ensures: • Proper use of foreign key constraints
 - insert_playlists.py
 - insert_playlistsongs.py
 - insert_country_rankings.py
+
+## Backend API Development 
+
+We implemented backend RESTful APIs to support both relational and NoSQL-based queries. APIs were built using Express.js and connected to PostgreSQL and MongoDB.
+
+### Routes Implemented
+
+Each route is designed following the format:
+- Functionality Description  
+- Request Path  
+- Request Parameters (type, location, required)  
+- Response Parameters (type, description)  
 
 ## Datasets
 
