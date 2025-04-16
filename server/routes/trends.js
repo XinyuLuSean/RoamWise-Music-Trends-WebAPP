@@ -63,8 +63,8 @@ router.get('/top-songs-by-country', async (req, res) => {
     }
   });
   
-  // GET /api/trends/top-country-per-song
-  router.get('/top-country-per-song', async (req, res) => {
+// GET /api/trends/top-country-per-song
+router.get('/top-country-per-song', async (req, res) => {
     try {
       const query = `
         WITH song_country_counts AS (
@@ -106,4 +106,26 @@ router.get('/top-songs-by-country', async (req, res) => {
     }
   });
 
-  module.exports = router;
+// GET /api/home/albums-by-country
+router.get('/albums-by-country', async (req, res) => {
+    try {
+      const query = `
+        SELECT
+          cr.country,
+          COUNT(DISTINCT al.album_id) AS album_count
+        FROM countryrankings cr
+        JOIN songs s ON cr.song_id = s.song_id
+        JOIN albums al ON s.album_id = al.album_id
+        GROUP BY cr.country
+        ORDER BY album_count DESC;
+      `;
+      const result = await pool.query(query);
+      res.json(result.rows);
+    } catch (err) {
+      console.error('Error fetching album count by country:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
+
+ module.exports = router;
