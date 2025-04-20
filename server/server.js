@@ -20,9 +20,9 @@ const historyRoutes = require('./routes/history');
 // Route registration
 app.use('/api', dbTestRoutes);         
 app.use('/api/home', homeRoutes);
-// app.use('/api/trends', trendsRoutes);
+app.use('/api/trends', trendsRoutes);
 app.use('/api/artists', artistsRoutes);   
-// app.use('/api/search', searchRoutes);
+app.use('/api/search', searchRoutes);
 // app.use('/api/realtime', realtimeRoutes);
 // app.use('/api/history', historyRoutes);
 
