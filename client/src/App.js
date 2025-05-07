@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import CssBaseline                     from '@mui/material/CssBaseline';
+import { ThemeProvider, createTheme }  from '@mui/material/styles';
 import { indigo, amber } from '@mui/material/colors'
-import { createTheme } from "@mui/material/styles";
 import './App.css';
 
-import NavBar from './components/NavBar';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import TrendsPage from './pages/TrendsPage';
@@ -21,7 +20,6 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
-        <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchPage />} />
