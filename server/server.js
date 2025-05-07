@@ -8,11 +8,10 @@ app.use(cors());
 app.use(express.json());
 
 const dbTestRoutes = require('./routes/db_test'); 
-// Route imports (modular by page)
 const homeRoutes = require('./routes/home');
-const trendsRoutes = require('./routes/trends');
-const artistsRoutes = require('./routes/artists');
-const searchRoutes = require('./routes/search');
+const artistTrendsRoutes = require('./routes/artist_trends');
+const songTrendsRoutes = require('./routes/song_trends');
+const countryTrendsRoutes = require('./routes/country_trends');
 const realtimeRoutes = require('./routes/realtime');
 const historyRoutes = require('./routes/history');
 
@@ -20,9 +19,9 @@ const historyRoutes = require('./routes/history');
 // Route registration
 app.use('/api', dbTestRoutes);         
 app.use('/api/home', homeRoutes);
-app.use('/api/trends', trendsRoutes);
-app.use('/api/artists', artistsRoutes);   
-app.use('/api/search', searchRoutes);
+app.use('/api/artist_trends', artistTrendsRoutes);
+app.use('/api/song_trends', songTrendsRoutes);
+app.use('/api/country_trends', countryTrendsRoutes);
 // app.use('/api/realtime', realtimeRoutes);
 // app.use('/api/history', historyRoutes);
 
