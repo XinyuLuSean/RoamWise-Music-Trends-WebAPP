@@ -10,5 +10,6 @@ __pycache__/
 .vscode/
 
 client/node_modules/
-
-
+*.log
+node_modules/
+client/node_modules/.cache/
