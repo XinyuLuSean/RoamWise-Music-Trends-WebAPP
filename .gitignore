@@ -8,3 +8,7 @@ datasets/*.csv
 __pycache__/
 *.pyc
 .vscode/
+
+client/node_modules/
+
+

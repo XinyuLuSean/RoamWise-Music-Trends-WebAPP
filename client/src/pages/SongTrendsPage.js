@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Button } from '@mui/material';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 const config = require('../config.json');
 
 export default function TopCountryPerSongPage() {
+  const navigate = useNavigate();
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,6 +30,14 @@ export default function TopCountryPerSongPage() {
 
   return (
     <Container>
+      {/* Back button */}
+      <Button
+        variant="outlined"
+        onClick={() => navigate('/')}
+        sx={{ mt: 2, mb: 2 }}
+      >
+        ← Back to Home
+      </Button>
       <Typography variant="h4" gutterBottom>
         Song Trends
       </Typography>

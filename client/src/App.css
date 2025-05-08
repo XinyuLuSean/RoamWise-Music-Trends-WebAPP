@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+.nav-button {
+  padding: 10px 20px;
+  background-color: #00C9A7;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #009f8e;
+}

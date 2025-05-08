@@ -6,7 +6,7 @@ const { MongoClient } = require('mongodb');
 
 const uri = 'mongodb://localhost:27017';
 const dbName = 'global_music_mongo';
-const collectionName = 'lastfm_top_tracks';
+const collectionName = "realtime_listening";
 
 // GET /api/home/top-songs
 router.get('/top-songs', async (req, res) => {
@@ -70,24 +70,48 @@ router.get('/top-playlists', async (req, res) => {
   }
 });
 
-router.get('/global-trends', async (req, res) => {
-    const date = req.query.date || new Date().toISOString().slice(0, 10); // 默认是今天的日期
-  
-    const client = new MongoClient(uri);
-    try {
-      await client.connect();
-      const db = client.db(dbName);
-      const collection = db.collection(collectionName);
-  
-      const results = await collection.find({ date: date }, { projection: { _id: 0 } }).toArray();
-      res.json(results);
-    } catch (err) {
-      console.error('Error fetching global trends:', err);
-      res.status(500).send('Internal Server Error');
-    } finally {
-      await client.close();
-    }
-  });
+router.get("/global-trends", async (req, res) => {
+  const dateStr = req.query.date || new Date().toISOString().slice(0, 10);
+  const start = new Date(dateStr);
+  const end = new Date(dateStr);
+  end.setDate(end.getDate() + 1);
+
+  const client = new MongoClient(uri);
+
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+
+    const raw = await collection
+      .find({ timestamp: { $gte: start, $lt: end } })
+      .toArray();
+
+    const result = {};
+
+    raw.forEach((doc) => {
+      const country = doc.country;
+      if (!result[country]) result[country] = [];
+      result[country].push({
+        song_title: doc.song_title || doc.title || "N/A",
+        artist: doc.artist || "Unknown",
+        listener_count: doc.listener_count || doc.streams || 0,
+      });
+    });
+
+    Object.keys(result).forEach((country) => {
+      result[country] = result[country]
+        .sort((a, b) => b.listener_count - a.listener_count)
+        .slice(0, 3);
+    });
+
+    res.json(result);
+  } catch (err) {
+    console.error("Error fetching global trends:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  } finally {
+    await client.close();
+  }
+});
 
 module.exports = router;
-

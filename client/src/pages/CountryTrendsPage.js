@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
   Container,
@@ -12,6 +13,7 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 const config = require('../config.json');
 
 export default function CountryTrendsPage() {
+  const navigate = useNavigate();
   const [tabIndex, setTabIndex] = useState(0);
 
   // Album counts state
@@ -115,6 +117,15 @@ export default function CountryTrendsPage() {
 
   return (
     <Container>
+      {/* Back button */}
+      <Button
+        variant="outlined"
+        onClick={() => navigate('/')}
+        sx={{ mt: 2, mb: 2 }}
+      >
+        ← Back to Home
+      </Button>
+
       <Typography variant="h4" gutterBottom>Country Trends</Typography>
 
       <Tabs value={tabIndex} onChange={(_, i) => setTabIndex(i)} sx={{ mb: 2 }}>

@@ -1,15 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
   Container,
   Typography,
   Tabs,
   Tab,
-  Box
+  Box,
+  Button
 } from '@mui/material';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 const config = require('../config.json');
 
 export default function ArtistTrendsPage() {
+  const navigate = useNavigate();
   const [tabIndex, setTabIndex] = useState(0);
 
   // Popular artists state
@@ -61,6 +64,15 @@ export default function ArtistTrendsPage() {
 
   return (
     <Container>
+      {/* Back button */}
+      <Button
+        variant="outlined"
+        onClick={() => navigate('/')}
+        sx={{ mt: 2, mb: 2 }}
+      >
+        ← Back to Home
+      </Button>
+
       <Typography variant="h4" gutterBottom>
         Artist Trends
       </Typography>
