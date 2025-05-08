@@ -1,0 +1,62 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #2c3e50;
+    min-width: 220px;
+    perspective: 800px;
+  }
+  
+  .menu-item {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 14px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    transform: rotateY(-8deg);
+    transform-origin: left;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+  }
+  
+  .menu-item:hover {
+    transform: rotateY(0deg) scale(1.03);
+    background-color: #2980b9;
+    box-shadow: 4px 6px 10px rgba(0,0,0,0.4);
+  }
+  
+  .menu-item.active {
+    background-color: #1abc9c;
+    transform: rotateY(0deg) scale(1.05);
+  }
+  
+
+  .color-0 { background-color: #16a085; }
+  .color-1 { background-color: #8e44ad; }
+  .color-2 { background-color: #e67e22; }
+  .color-3 { background-color: #e74c3c; }
+
+.MuiDataGrid-columnHeaders {
+  background-color: #f4f6f8;
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
+  border-bottom: 2px solid #ddd;
+  transform: translateZ(0);
+  transition: all 0.3s ease;
+}
+
+
+.MuiDataGrid-columnHeaders:hover {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.MuiDataGrid-row:hover {
+  background-color: #ecf5ff;
+  transition: background-color 0.3s ease;
+}

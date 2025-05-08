@@ -20,7 +20,8 @@ const HomePage = () => {
       }}>
         <button onClick={() => navigate('/country-trends')} className="nav-button">📊 Country Trends</button>
         <button onClick={() => navigate('/song-trends')} className="nav-button">🎶 Song Trends</button>
-        <button onClick={() => navigate('/artist-trends')} className="nav-button">👩‍🎤 Artist Trends</button>
+        <button onClick={() => navigate('/artist-trends')} className="nav-button">Artist Trends</button>
+        <button onClick={() => navigate('/top')} className="nav-button">Top Music Overview</button>
       </div>
 
       {/* 地图和标题 */}

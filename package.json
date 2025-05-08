@@ -4,6 +4,9 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.1.0",
     "@mui/material": "^7.1.0",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.1.0",
+    "i18n-iso-countries": "^7.14.0",
     "react-router-dom": "^7.5.3"
   }
 }

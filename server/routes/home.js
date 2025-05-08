@@ -70,6 +70,41 @@ router.get('/top-playlists', async (req, res) => {
   }
 });
 
+// GET /api/home/playlist-recent-hits  
+router.get('/playlist-recent-hits', async (req, res) => {
+  try {
+    const query = `
+      WITH recent_top AS (                              
+          SELECT DISTINCT song_id
+          FROM   countryrankings
+          WHERE  date >= CURRENT_DATE - INTERVAL '365 days'
+            AND  rank_position <= 50
+      ),
+      playlist_stats AS (
+          SELECT ps.playlist_id,
+                 COUNT(*)          AS total_songs,
+                 COUNT(rt.song_id) AS hit_songs
+          FROM   playlistsongs ps
+          LEFT   JOIN recent_top rt USING (song_id)
+          GROUP  BY ps.playlist_id
+      )
+      SELECT p.playlist_id,
+             p.name,
+             ROUND(hit_songs::NUMERIC / NULLIF(total_songs,0), 3) AS recent_hit_rate
+      FROM   playlist_stats ps
+      JOIN   playlists p USING (playlist_id)
+      WHERE  ROUND(hit_songs::NUMERIC / NULLIF(total_songs,0), 3) NOT IN (0, 1)
+      ORDER  BY recent_hit_rate DESC
+      LIMIT  20;
+    `;
+    const result = await pool.query(query);
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error fetching playlist recent hits:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 router.get("/global-trends", async (req, res) => {
   const dateStr = req.query.date || new Date().toISOString().slice(0, 10);
   const start = new Date(dateStr);

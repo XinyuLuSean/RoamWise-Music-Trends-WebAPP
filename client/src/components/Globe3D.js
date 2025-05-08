@@ -93,7 +93,7 @@ const Globe3D = () => {
   return (
     <div style={{ backgroundColor: "#000", height: "100vh", position: "relative", color: "#fff" }}>
       <h2 style={{ textAlign: "center", paddingTop: "20px", color: "#00C9A7" }}>
-        🌍 RoamWise: Global Music Trends
+        RoamWise: Global Music Trends
       </h2>
       <p style={{ textAlign: "center", color: "#ccc" }}>
         Click any country to view today's Top 3 tracks.
@@ -103,6 +103,7 @@ const Globe3D = () => {
         <ComposableMap
           projection="geoEqualEarth"
           projectionConfig={{ scale: 160 }}
+          className="floating-map"
           style={{ width: "100%", height: "80vh", marginTop: "30px" }}
         >
           <Geographies geography={worldGeoJSON}>

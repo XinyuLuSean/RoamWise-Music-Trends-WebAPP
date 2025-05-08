@@ -80,6 +80,57 @@ router.get('/albums-by-country', async (req, res) => {
   }
 });
 
+//  GET /api/country_trends/rep-playlists
+router.get('/rep-playlists', async (_req, res) => {
+  const query = `
+    WITH top50_yr AS (                    -- songs that charted Top-50 last 365 days
+      SELECT DISTINCT country, song_id
+        FROM countryrankings
+       WHERE date >= CURRENT_DATE - INTERVAL '365 days'
+         AND rank_position <= 50
+    ), pl_totals AS (                     -- playlist sizes
+      SELECT playlist_id, COUNT(*) AS total_songs
+        FROM playlistsongs
+       GROUP BY playlist_id
+    ), hits AS (                          -- how many of those songs per playlist & country
+      SELECT t.country,
+             ps.playlist_id,
+             COUNT(*) AS hit_songs
+        FROM top50_yr      t
+        JOIN playlistsongs ps ON ps.song_id = t.song_id
+       GROUP BY t.country, ps.playlist_id
+    ), rates AS (                         -- compute hit-rate
+      SELECT h.country,
+             h.playlist_id,
+             ROUND(h.hit_songs::NUMERIC / pt.total_songs, 3) AS hit_rate
+        FROM hits      h
+        JOIN pl_totals pt USING (playlist_id)
+       WHERE h.hit_songs <> 0
+         AND h.hit_songs <> pt.total_songs
+    ), ranked AS (                        -- keep best per country
+      SELECT *,
+             ROW_NUMBER() OVER (PARTITION BY country
+                                ORDER BY hit_rate DESC, playlist_id) AS rn
+        FROM rates
+    )
+    SELECT r.country,
+           p.playlist_id,
+           p.name,
+           r.hit_rate
+      FROM ranked r
+      JOIN playlists p USING (playlist_id)
+     WHERE rn = 1
+     ORDER BY country;
+  `;
+  try {
+    const { rows } = await pool.query(query);
+    res.json(rows);
+  } catch (err) {
+    console.error('Error fetching representative playlists:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 // GET /api/country_trends/jaccard_similarity?date=2025-04-04
 router.get('/jaccard_similarity', async (req, res) => {
   const targetDate = req.query.date;

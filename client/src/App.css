@@ -50,3 +50,28 @@
 .nav-button:hover {
   background-color: #009f8e;
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating-map {
+  animation: float 4s ease-in-out infinite;
+}
+
+
+.floating-map:hover {
+  transform: scale(1.03); 
+}
+
+.floating-map:active {
+  transform: scale(1.07); 
+}
