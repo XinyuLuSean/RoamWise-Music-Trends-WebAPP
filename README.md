@@ -69,4 +69,61 @@ Due to file size, datasets are available via Google Drive:
 
 - [Top Songs Cleaned CSV](https://drive.google.com/file/d/1OgsGpsE5TWSRsOto9ZtY6cL5aQcCUuu_/view?usp=drive_link)
 - [Playlists Cleaned CSV](https://drive.google.com/file/d/1eFlZoxA4hMzdpnN0UTDAqcEx8FJ5avSR/view?usp=drive_link)
+- 
+
+## Features
+
+- 🌍 Interactive world map of music trends
+- 📊 Real-time global listening data via Last.fm API
+- 📁 Historical Spotify-based rankings and playlist insights
+- 🔗 Dual database support: PostgreSQL (relational) + MongoDB (real-time)
+
+---
+
+## How to Run the Project Locally
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/Group23-Project.git
+cd Group23-Project
+
+### 2. Set Up the Backend
+
+cd server
+npm install
+cp .env.example .env  
+node index.js        
+
+### 3. Set Up the Frontend
+
+cd ../client
+npm install
+npm start
+
+### 4. Set Up Databases
+cd ../data_insertion
+python insert_artists.py
+python insert_albums.py
+python insert_songs.py
+python insert_playlists.py
+python insert_playlistsongs.py
+python insert_country_rankings.py
+
+cd ../realtime_pipeline
+python fetch_realtime.py
+
+
+# PostgreSQL settings
+PG_HOST=your-postgres-hostname
+PG_PORT=5432
+PG_USER=your-postgres-username
+PG_PASSWORD=your-postgres-password
+PG_DATABASE=global_music
+
+# MongoDB Atlas URI
+MONGO_URI=mongodb+srv://<username>:<password>@your-cluster.mongodb.net/global_music?retryWrites=true&w=majority
+
+# Last.fm API key 
+LASTFM_API_KEY=your_lastfm_api_key
 
