@@ -1,16 +1,13 @@
-# Ignore dataset CSVs
-datasets/*.csv
-
-# Ignore environment variable file
-.env
-
-# Ignore Python bytecode and VSCode settings
-__pycache__/
-*.pyc
-.vscode/
-
-client/node_modules/
-*.log
+# Node
 node_modules/
-client/node_modules/.cache/
-client/node_modules/.cache/default-development/7.pack 
+client/node_modules/
+client/.cache/
+**/.cache/
+dist/
+build/
+.next/
+.out/
+.env
+.env.*
+# macOS
+.DS_Store
