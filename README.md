@@ -136,25 +136,31 @@ Due to file size, datasets are available via Google Drive:
 ## How to Run the Project Locally
 
 ### 1. Clone the Repository
-
 ```bash
-git clone https://github.com/your-username/Group23-Project.git
-cd Group23-Project
+git clone https://github.com/XinyuLuSean/RoamWise-Music-Trends-WebAPP.git
+cd RoamWise-Music-Trends-WebAPP
+````
 
 ### 2. Set Up the Backend
 
+```bash
 cd server
 npm install
-cp .env.example .env  
-node index.js        
+cp .env.example .env   # create your environment file
+node index.js
+```
 
 ### 3. Set Up the Frontend
 
+```bash
 cd ../client
 npm install
 npm start
+```
 
-### 4. Set Up Databases
+### 4. Load Databases
+
+```bash
 cd ../data_insertion
 python insert_artists.py
 python insert_albums.py
@@ -162,11 +168,20 @@ python insert_songs.py
 python insert_playlists.py
 python insert_playlistsongs.py
 python insert_country_rankings.py
+```
 
+### 5. Start Real-Time Data Pipeline
+
+```bash
 cd ../realtime_pipeline
 python fetch_realtime.py
+```
 
+### 6. Configure Environment Variables
 
+Create a `.env` file with the following settings:
+
+```bash
 # PostgreSQL settings
 PG_HOST=your-postgres-hostname
 PG_PORT=5432
@@ -179,4 +194,4 @@ MONGO_URI=mongodb+srv://<username>:<password>@your-cluster.mongodb.net/global_mu
 
 # Last.fm API key 
 LASTFM_API_KEY=your_lastfm_api_key
-
+```
