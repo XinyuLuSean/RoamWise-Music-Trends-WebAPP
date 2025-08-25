@@ -1,4 +1,54 @@
-# Group23-Project
+# RoamWise: Global Music Trend Web App
+
+An interactive platform to **visualize and analyze global music trends** across 200+ countries.  
+Built as a full-stack application with **React, REST APIs, PostgreSQL, MongoDB, AWS RDS, and Python pipelines**.
+
+---
+
+## Project Overview
+RoamWise transforms music analytics from static charts into a **dynamic, map-driven experience**:
+- Explore trending songs & artists by country on an interactive world map
+- Track real-time listening behavior via the **Last.fm API**
+- Compare historical Spotify rankings with live data to see how tastes evolve
+- Dual database support: **PostgreSQL (relational)** + **MongoDB (real-time)**
+
+---
+
+## Tech Stack
+- **Frontend:** React.js, Mapbox, REST APIs  
+- **Backend:** Node.js (Express.js)  
+- **Databases:** PostgreSQL (AWS RDS), MongoDB Atlas  
+- **Data Pipeline:** Python (pandas, psycopg2, dotenv)  
+- **Deployment:** AWS RDS, MongoDB Atlas, Localhost testing  
+
+---
+
+## Key Features
+- Interactive **map-based visualization** of global music trends  
+- **Real-time data pipeline** using Last.fm API  
+- Historical trend insights from Spotify playlists & rankings  
+- Hybrid storage: **Relational schema + NoSQL collections**  
+- Data ingestion optimized with batch inserts (cut load time from 20h → 4.5h)
+
+## Repository Structure
+- client/ # React frontend
+- server/ # Express backend + REST APIs
+- data_insertion/ # Python scripts for PostgreSQL data loading
+- realtime_pipeline # Real-time Last.fm fetch & update
+
+## Contributions
+This project was developed as a **team of 4** for CIS5500 (Databases & Web Systems) @ UPenn.  
+I contributed across the stack, including:
+- Designing & normalizing the relational schema (BCNF)  
+- Building the **Python ETL pipeline** with optimized batch inserts  
+- Implementing core REST APIs and database integration  
+- Deploying PostgreSQL on AWS RDS and setting up MongoDB Atlas  
+
+---
+
+## License
+This project is licensed under the **MIT License** – free to use and adapt.  
+See the [LICENSE](./LICENSE) file for details.
 
 ## Motivation for the Idea / Description of the Problem the Application Solves
 We are all passionate about music, but each of us has a unique musical taste and follows different music trends. This inspired us to create a global music trend visualization platform that allows users to explore how music is trending in different regions intuitively and interactively.
