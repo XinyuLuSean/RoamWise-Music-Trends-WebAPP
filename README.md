@@ -30,11 +30,15 @@ RoamWise transforms music analytics from static charts into a **dynamic, map-dri
 - Hybrid storage: **Relational schema + NoSQL collections**  
 - Data ingestion optimized with batch inserts (cut load time from 20h → 4.5h)
 
+---
+
 ## Repository Structure
 - client/ # React frontend
 - server/ # Express backend + REST APIs
 - data_insertion/ # Python scripts for PostgreSQL data loading
 - realtime_pipeline # Real-time Last.fm fetch & update
+
+---
 
 ## Contributions
 This project was developed as a **team of 4** for CIS5500 (Databases & Web Systems) @ UPenn.  
@@ -42,15 +46,18 @@ I contributed across the stack, including:
 - Designing & normalizing the relational schema (BCNF)  
 - Building the **Python ETL pipeline** with optimized batch inserts  
 - Implementing core REST APIs and database integration  
-- Deploying PostgreSQL on AWS RDS and setting up MongoDB Atlas  
-
+- Deploying PostgreSQL on AWS RDS and setting up MongoDB Atlas
 ---
 
 ## License
 This project is licensed under the **MIT License** – free to use and adapt.  
 See the [LICENSE](./LICENSE) file for details.
 
-## Motivation for the Idea / Description of the Problem the Application Solves
+---
+
+## Project Details
+
+### Motivation for the Idea / Description of the Problem the Application Solves
 We are all passionate about music, but each of us has a unique musical taste and follows different music trends. This inspired us to create a global music trend visualization platform that allows users to explore how music is trending in different regions intuitively and interactively.
 
 Music trends are constantly evolving and vary significantly across different regions. However, existing music analytics platforms primarily present data in static lists and rankings, making it difficult to visualize the global distribution of music trends effectively. Understanding how songs gain popularity in different countries and how listening habits change over time is crucial for enthusiasts, industry professionals, and data analysts.
@@ -101,6 +108,8 @@ Schema design ensures: • Proper use of foreign key constraints
 - insert_playlistsongs.py
 - insert_country_rankings.py
 
+---
+
 ## Backend API Development 
 
 We implemented backend RESTful APIs to support both relational and NoSQL-based queries. APIs were built using Express.js and connected to PostgreSQL and MongoDB.
@@ -111,7 +120,9 @@ Each route is designed following the format:
 - Functionality Description  
 - Request Path  
 - Request Parameters (type, location, required)  
-- Response Parameters (type, description)  
+- Response Parameters (type, description)
+
+---
 
 ## Datasets
 
@@ -119,15 +130,7 @@ Due to file size, datasets are available via Google Drive:
 
 - [Top Songs Cleaned CSV](https://drive.google.com/file/d/1OgsGpsE5TWSRsOto9ZtY6cL5aQcCUuu_/view?usp=drive_link)
 - [Playlists Cleaned CSV](https://drive.google.com/file/d/1eFlZoxA4hMzdpnN0UTDAqcEx8FJ5avSR/view?usp=drive_link)
-- 
-
-## Features
-
-- 🌍 Interactive world map of music trends
-- 📊 Real-time global listening data via Last.fm API
-- 📁 Historical Spotify-based rankings and playlist insights
-- 🔗 Dual database support: PostgreSQL (relational) + MongoDB (real-time)
-
+  
 ---
 
 ## How to Run the Project Locally
